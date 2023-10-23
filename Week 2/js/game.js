@@ -2,6 +2,8 @@
 
 var canvas = document.getElementById("canvas");
 var context = canvas.getContext("2d");
+timer = setInterval(animate, 1000/60);
+
 //var timer;
 //1000 ms or 1 second / FPS
 //var interval = 1000/60;
@@ -15,12 +17,13 @@ var context = canvas.getContext("2d");
 	//player = new GameObject();
 
 	//Set the Animation Timer
-	timer = setInterval(animate, 1000/60);
-
+	
 	var player1 = new GameObject();
-	player1.width = 10
-	player1.height = 30
-	player1.x = player1/2
+	
+	player1.width = 25
+	player1.height = 150
+	player1.x = player1.width/2
+	
 
 function animate()
 {
@@ -41,6 +44,6 @@ function animate()
 	} */
 	
 	//Update the Screen
-	player.drawRect();
+	player1.drawRect()
 }
 

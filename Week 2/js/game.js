@@ -19,6 +19,8 @@ timer = setInterval(animate, 1000/60);
 	//Set the Animation Timer
 	
 	var player1 = new GameObject();
+	var top = canvas.height - player1.height;
+	var bottom = canvas.height - player1.height;
 	
 	player1.width = 25
 	player1.height = 150
@@ -35,15 +37,28 @@ function animate()
 	if(w)
 	{
 		console.log("Moving Up");
-		player1.y += -2;
+		player1.y += -4;
 	}
 	if(s)
 	{
 		console.log("Moving Down");
-		player1.y += 2;
-	} 
+		player1.y += 4;
+}
+	if(player1.y - player1.height/2 < 0)
+	{
+		player1.y = 0 + player1.height/2;
+	}
+
+	if(player1.y  > canvas.height - player1.height/2)
+	{
+		player1.y = canvas.height - player1.height/2;
+	}
+	
+
+	 
 	
 	//Update the Screen
 	player1.drawRect()
 }
+
 

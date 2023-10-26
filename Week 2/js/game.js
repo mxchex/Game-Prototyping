@@ -60,17 +60,28 @@ function animate()
 		player1.y = canvas.height - player1.height/2;
 	}
 
+	if (
+		ball.x + ball.width / 2 > player1.x - player1.width / 2 &&
+		ball.x - ball.width / 2 < player1.x + player1.width / 2 &&
+		ball.y + ball.height / 2 > player1.y - player1.height / 2 &&
+		ball.y - ball.height / 2 < player1.y + player1.height / 2
+	  ) {
+		// Collision detected with player1
+		// Reverse the ball's horizontal direction
+		ball.vx = -ball.vx;
+	  }
+
 	if(ball.x > canvas.width - ball.width/2)
 	{
 		ball.x = canvas.width - ball.width/2
 		ball.vx = -ball.vx;	
 	}
 
-	if(ball.x < ball.width/2)
+	/*if(ball.x < ball.width/2)
 	{
 		ball.x = ball.width/2;
 		ball.vx = -ball.vx;
-	}
+	}*/
 
 	if(ball.y > canvas.height - ball.height/2)
 	{

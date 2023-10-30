@@ -63,6 +63,22 @@ function animate()
 		player1.y = canvas.height - player1.height/2;
 	}
 
+	if(ball.hitTestObject(player1))
+    {
+        ball.x = player1.x + ball.width/2 + player1.width/2
+        ball.vx = -ball.vx
+        //Bottom
+        if(ball.y < player1.y - player1.height/6)
+        {
+            ball.vy = ball.vy -5;
+        }
+        //Top
+        if(ball.y > player1.y + player1.height/6)
+        {
+            ball.vy = ball.vy +5;
+        }
+    }
+
 	if (
 		ball.x + ball.width / 2 > player1.x - player1.width / 2 &&
 		ball.x - ball.width / 2 < player1.x + player1.width / 2 &&

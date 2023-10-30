@@ -20,12 +20,22 @@ var ball = new GameObject();
 	//Set the Animation Timer
 	
 	var player1 = new GameObject();
+	var player2 = new GameObject();
 	var top = canvas.height - player1.height;
+	var top = canvas.height - player2.height;
 	var bottom = canvas.height - player1.height;
+	var bottom = canvas.height - player2.height;
+
 	
-	player1.width = 25
+	
+	player1.width = 20
 	player1.height = 150
 	player1.x = player1.width/2
+
+	player2.width = 20
+	player2.height = 150
+	player2.x = canvas.width - player2.width/2
+	player2.y = canvas.height/2
 
 	ball.width = 40;
 	ball.height = 40;
@@ -46,13 +56,24 @@ function animate()
 	if(w)
 	{
 		console.log("Moving Up");
-		player1.y += -4;
+		player1.y += -6;
 	}
 	if(s)
 	{
 		console.log("Moving Down");
-		player1.y += 4;
+		player1.y += 6;
 }
+	if(up)
+	{
+		console.log("Moving Up");
+		player2.y += -6;
+	}
+	if(down)
+	{
+		console.log("Moving Down");
+		player2.y += 6;
+}
+
 	if(player1.y - player1.height/2 < 0)
 	{
 		player1.y = 0 + player1.height/2;
@@ -90,11 +111,48 @@ function animate()
 		ball.vx = -ball.vx;
 	  }
 
+	  if(player2.y - player2.height/2 < 0)
+	{
+		player2.y = 0 + player2.height/2;
+	}
+
+	if(player2.y  > canvas.height - player2.height/2)
+	{
+		player2.y = canvas.height - player2.height/2;
+	}
+
+	if(ball.hitTestObject(player1))
+    {
+        ball.x = player2.x + ball.width/2 + player2.width/2
+        ball.vx = -ball.vx
+        //Bottom
+        if(ball.y < player2.y - player2.height/6)
+        {
+            ball.vy = ball.vy -5;
+        }
+        //Top
+        if(ball.y > player2.y + player2.height/6)
+        {
+            ball.vy = ball.vy +5;
+        }
+    }
+
+	if (
+		ball.x + ball.width / 2 > player2.x - player2.width / 2 &&
+		ball.x - ball.width / 2 < player2.x + player2.width / 2 &&
+		ball.y + ball.height / 2 > player2.y - player2.height / 2 &&
+		ball.y - ball.height / 2 < player2.y + player2.height / 2
+	  ) {
+		// Collision detected with player1
+		// Reverse the ball's horizontal direction
+		ball.vx = -ball.vx;
+	  }
+
 
 	if(ball.x > canvas.width - ball.width/2)
 	{
-		//ball.x = canvas.width/2;
-		//ball.y = canvas.height/2;
+		ball.x = canvas.width/2;
+		ball.y = canvas.height/2;
 		ball.vx = -ball.vx;	
 	}
 
@@ -121,6 +179,7 @@ function animate()
 	//Update the Screen
 	ball.drawCircle()
 	player1.drawRect()
+	player2.drawRect()
 }
 
 

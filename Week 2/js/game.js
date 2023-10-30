@@ -26,6 +26,9 @@ var ball = new GameObject();
 	player1.width = 25
 	player1.height = 150
 	player1.x = player1.width/2
+
+	ball.width = 40;
+	ball.height = 40;
 	
 	ball.vx = 5;
 	ball.vy = 5;
@@ -71,17 +74,20 @@ function animate()
 		ball.vx = -ball.vx;
 	  }
 
+
 	if(ball.x > canvas.width - ball.width/2)
 	{
-		ball.x = canvas.width - ball.width/2
+		//ball.x = canvas.width/2;
+		//ball.y = canvas.height/2;
 		ball.vx = -ball.vx;	
 	}
 
-	/*if(ball.x < ball.width/2)
+	if(ball.x < ball.width/2)
 	{
-		ball.x = ball.width/2;
+		ball.x = canvas.width/2;
+		ball.y = canvas.height/2;
 		ball.vx = -ball.vx;
-	}*/
+	}
 
 	if(ball.y > canvas.height - ball.height/2)
 	{

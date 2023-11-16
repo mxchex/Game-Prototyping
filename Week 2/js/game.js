@@ -44,8 +44,8 @@ var ball = new GameObject();
 	ball.height = 40;
 	
 	ball.vx = 5;
-	ball.vy = 5;
-	timer = setInterval(animate, interval);
+	ball.vy = 0;
+	//timer = setInterval(animate, interval);
 
 
 function animate()
@@ -56,7 +56,7 @@ function animate()
 	ball.move();
 
 
-	//Move the ball to the right
+	//paddle movement
 	if(w)
 	{
 		console.log("Moving Up");
@@ -78,6 +78,7 @@ function animate()
 		player2.y += 6;
 }
 
+//paddle draw
 	context.save();
 	context.strokeStyle = "yellow";
 	context.beginPath();
@@ -88,6 +89,7 @@ function animate()
 	context.stroke();
 	context.restore();
 
+	//paddle collission with top and bottom boundary
 	if(player1.y - player1.height/2 < 0)
 	{
 		player1.y = 0 + player1.height/2;
@@ -98,6 +100,7 @@ function animate()
 		player1.y = canvas.height - player1.height/2;
 	}
 
+	//
 	if(ball.hitTestObject(player1))
     {
         ball.x = player1.x + ball.width/2 + player1.width/2
@@ -105,16 +108,16 @@ function animate()
         //Bottom
         if(ball.y < player1.y - player1.height/6)
         {
-            ball.vy = ball.vy;
+            ball.vy = -5;
         }
         //Top
         if(ball.y > player1.y + player1.height/6)
         {
-            ball.vy = ball.vy;
+            ball.vy = 5;
         }
     }
 
-	if (
+	/*if (
 		ball.x + ball.width / 2 > player1.x - player1.width / 2 &&
 		ball.x - ball.width / 2 < player1.x + player1.width / 2 &&
 		ball.y + ball.height / 2 > player1.y - player1.height / 2 &&
@@ -123,7 +126,7 @@ function animate()
 		// Collision detected with player1
 		// Reverse the ball's horizontal direction
 		ball.vx = -ball.vx;
-	  }
+	  }*/
 
 	  if(player2.y - player2.height/2 < 0)
 	{
@@ -135,23 +138,23 @@ function animate()
 		player2.y = canvas.height - player2.height/2;
 	}
 
-	if(ball.hitTestObject(player1))
+	if(ball.hitTestObject(player2))
     {
-        ball.x = player2.x + ball.width/2 + player2.width/2
+        //ball.x = player2.x + ball.width/2 + player2.width/2
         ball.vx = -ball.vx
         //Bottom
         if(ball.y < player2.y - player2.height/6)
         {
-            ball.vy = ball.vy -5;
+            ball.vy = -5;
         }
         //Top
         if(ball.y > player2.y + player2.height/6)
         {
-            ball.vy = ball.vy +5;
+            ball.vy = 5;
         }
     }
 
-	if (
+	/*if (
 		ball.x + ball.width / 2 > player2.x - player2.width / 2 &&
 		ball.x - ball.width / 2 < player2.x + player2.width / 2 &&
 		ball.y + ball.height / 2 > player2.y - player2.height / 2 &&
@@ -160,10 +163,10 @@ function animate()
 		// Collision detected with player1
 		// Reverse the ball's horizontal direction
 		ball.vx = -ball.vx;
-	  }
+	  }*/
 
 	  //right collision
-	if(ball.x > canvas.width - ball.width/2)
+	if(ball.x > canvas.width + ball.width/2)
 	{
 		ball.x = canvas.width/2;
 		ball.y = canvas.height/2;

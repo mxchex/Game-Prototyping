@@ -28,7 +28,7 @@ var ball = new GameObject();
 
 	var p1Wins = 0;
 	var p2Wins = 0;
-
+	var img=document.getElementById("ric");
 	
 	
 	player1.width = 20
@@ -54,6 +54,7 @@ function animate()
 	
 	//----Movement Using the Player's move() function----
 	ball.move();
+
 
 	//Move the ball to the right
 	if(w)
@@ -191,6 +192,8 @@ function animate()
 		ball.y = ball.height/2;
 		ball.vy = -ball.vy;	
 	}
+
+
 	//---------------------------------------------------
 	//score hud
 	context.font = "25px Arial";
@@ -203,6 +206,7 @@ function animate()
 	ball.drawCircle()
 	player1.drawRect()
 	player2.drawRect()
+	context.drawImage(img, ball.x-25, ball.y-25, ball.width+5, ball.height+10);
 }
 
 

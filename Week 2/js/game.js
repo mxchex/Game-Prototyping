@@ -26,6 +26,9 @@ var ball = new GameObject();
 	var bottom = canvas.height - player1.height;
 	var bottom = canvas.height - player2.height;
 
+	var p1Wins = 0;
+	var p2Wins = 0;
+
 	
 	
 	player1.width = 20
@@ -91,12 +94,12 @@ function animate()
         //Bottom
         if(ball.y < player1.y - player1.height/6)
         {
-            ball.vy = ball.vy -5;
+            ball.vy = ball.vy;
         }
         //Top
         if(ball.y > player1.y + player1.height/6)
         {
-            ball.vy = ball.vy +5;
+            ball.vy = ball.vy;
         }
     }
 
@@ -148,12 +151,15 @@ function animate()
 		ball.vx = -ball.vx;
 	  }
 
-
+	  //right collision
 	if(ball.x > canvas.width - ball.width/2)
 	{
 		ball.x = canvas.width/2;
 		ball.y = canvas.height/2;
 		ball.vx = -ball.vx;	
+		//score
+		p1Wins = p1Wins +1
+
 	}
 
 	if(ball.x < ball.width/2)
@@ -161,6 +167,7 @@ function animate()
 		ball.x = canvas.width/2;
 		ball.y = canvas.height/2;
 		ball.vx = -ball.vx;
+		p2Wins = p2Wins +1;
 	}
 
 	if(ball.y > canvas.height - ball.height/2)
@@ -175,7 +182,13 @@ function animate()
 		ball.vy = -ball.vy;	
 	}
 	//---------------------------------------------------
-	
+	//score hud
+	context.font = "25px Arial";
+    context.fillText("Score", canvas.width/2 - ball.width, 40);
+    context.fillText(p1Wins, canvas.width/2 -ball.width, 80);
+    context.fillText(p2Wins, canvas.width/2 +ball.width/2, 80);
+
+
 	//Update the Screen
 	ball.drawCircle()
 	player1.drawRect()

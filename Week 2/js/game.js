@@ -77,6 +77,16 @@ function animate()
 		player2.y += 6;
 }
 
+	context.save();
+	context.strokeStyle = "yellow";
+	context.beginPath();
+	context.moveTo(canvas.width/2, canvas.height);
+	context.lineTo(canvas.width/2, canvas.height-canvas.height);
+	context.closePath();
+	context.lineWidth = 5; 
+	context.stroke();
+	context.restore();
+
 	if(player1.y - player1.height/2 < 0)
 	{
 		player1.y = 0 + player1.height/2;

@@ -203,7 +203,7 @@ function animate()
 
 
 	//Update the Screen
-	ball.drawCircle()
+	//ball.drawCircle()
 	player1.drawRect()
 	player2.drawRect()
 	context.drawImage(img, ball.x-25, ball.y-25, ball.width+5, ball.height+10);

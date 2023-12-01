@@ -90,30 +90,27 @@ function animate()
         //Bottom
         if(ball.y < player1.y - player1.height/6)
         {
-            ball.vy = - ball.vy -1
+            ball.vy = - ball.vy + 1
         }
         //Top
         if(ball.y > player1.y + player1.height/6)
         {
             ball.vy = ball.vy +1
         }
-    }
-
-    if(ball.hitTestObject(player2))
-    {
-        ball.x = player2.x - ball.width/2 - player2.width/2
-        ball.vx = -ball.vx
-        //Bottom
-        if(ball.y < player2.y - player2.height/6)
+            
+        if(ball.x < player1.x - player1.height/6)
         {
-            ball.vy = - ball.vy -1
+            ball.vx = - ball.vx -1
         }
         //Top
-        if(ball.y > player2.y + player2.height/6)
+        if(ball.x > player1.x + player1.height/3)
         {
-            ball.vy = ball.vy +1
+            ball.vx = ball.vx + 1
         }
     }
+
+
+   
 
 	//----Movement Using the ball's move() function----
 	ball.move();

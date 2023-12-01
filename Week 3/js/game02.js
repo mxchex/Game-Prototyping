@@ -67,28 +67,28 @@ function animate()
     ball.vy = -35
     score = score +1
 
-    //Collision--------------------------------------------------------------------------------------
+     //Collision--------------------------------------------------------------------------------------
     //inner
     if(ball.x < paddle.x - paddle.width/6)
     {
-    ball.vx = -ball.force
+    ball.vx = -ball.force;
     }
 
-    if(ball.x < paddle.x + paddle.width /6)
-    {
-    ball.vx = -ball.force
-    }
-
-    //outter
-    if(ball.x > paddle.x - paddle.width/3)
-    {
-    ball.vx = -ball.force
-    }
-
-    if(ball.x > paddle.x + paddle.width /3)
+   else if(ball.x < paddle.x + paddle.width /3)
     {
     ball.vx = ball.force
     }
+
+    //outter
+    else if (ball.x > paddle.x - paddle.width / 3 && ball.x <= paddle.x - paddle.width / 6)
+{
+    ball.vx = -ball.force;
+}
+// Outer right
+    else if (ball.x > paddle.x + paddle.width / 3 && ball.x <= paddle.x + paddle.width / 2)
+{
+    ball.vx = ball.force;
+}
 
     //-------------------------------------------------------------------------------------------------
 	
@@ -98,20 +98,17 @@ function animate()
     }
     
     //-------------Bounce off Bottom---------------
-	if(ball.y >= canvas.height -ball.height/2)
-	{
-		ball.y = canvas.height - ball.height
-		ball.vy = -ball.vy
-        ball.vy += gravity;
-        ball.y += ball.vy;
-        score = 0
-	}
-
+	if(ball.y < ball.width/2)
+    {
+        ball.y = ball.width/2
+        ball.vy = -ball.vy;
+    }
     //--------------Bounce off Top------------------
-	if(ball.y <= 0 + ball.height/2)
-	{
-		ball.vy = -ball.vy;
-	}
+    if(ball.y > canvas.height - ball.height/2)
+    {
+        ball.y = canvas.height - ball.height/2
+        ball.vy = -ball.vy;
+    }
 
     //--------------Bounce Right---------------------
 	if(ball.x > canvas.width - ball.width/2)

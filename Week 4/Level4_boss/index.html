@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rectangle Rotation</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="1024" height="600"></canvas>
+
+    <script>
+        var canvas = document.getElementById("canvas");
+        var context = canvas.getContext("2d");
+
+        var rectangle = {
+            x: 412,
+			y: 200,
+            width: 200,
+            height: 200,
+            rotation: 0
+        };
+
+        window.addEventListener('keydown', function (e) {
+            if (e.key === 'e') {
+                rotateRectangle(-60); // Rotate 5 degrees clockwise
+            } else if (e.key === 'q') {
+                rotateRectangle(60); // Rotate 5 degrees counterclockwise
+            }
+        });
+
+        function rotateRectangle(degrees) {
+            rectangle.rotation += degrees;
+            drawRectangle();
+        }
+
+        function drawRectangle() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Translate and rotate the canvas
+            context.translate(rectangle.x + rectangle.width / 2, rectangle.y + rectangle.height / 2);
+            context.rotate((rectangle.rotation * Math.PI) / 180);
+
+            // Draw the rotated rectangle
+            context.fillStyle = "#00F";
+            context.fillRect(-rectangle.width / 2, -rectangle.height / 2, rectangle.width, rectangle.height);
+
+            // Reset transformations
+            context.rotate((-rectangle.rotation * Math.PI) / 180);
+            context.translate(-(rectangle.x + rectangle.width / 2), -(rectangle.y + rectangle.height / 2));
+        }
+
+        // Initial drawing
+        drawRectangle();
+    </script>
+</body>
+</html>

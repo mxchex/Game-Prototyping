@@ -85,7 +85,7 @@ function animate()
     ball.vx = -ball.force;
 }
 // Outer right
-    else if (ball.x > paddle.x + paddle.width / 3 && ball.x <= paddle.x + paddle.width / 2)
+    //else if (ball.x > paddle.x + paddle.width / 3 && ball.x <= paddle.x + paddle.width / 2) //FIX THIS !!!!!!
 {
     ball.vx = ball.force;
 }

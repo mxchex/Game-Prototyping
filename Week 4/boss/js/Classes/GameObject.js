@@ -43,6 +43,17 @@ function GameObject(obj)
 		context.restore();
 		
 	}	
+
+	this.drawSelect = function()
+	{
+		context.save();
+			context.fillStyle = "blue";
+			context.translate(this.x, this.y);
+			context.rotate(this.angle * Math.PI/180);
+			context.fillRect((-this.width/2 - 15), (-this.height/2 - 15), this.width + 30, this.height + 30);
+		context.restore();
+		
+	}	
 	
 	this.drawCircle = function()
 	{

@@ -18,7 +18,7 @@ var select;
 	box1 = new GameObject();
 	box1.x = canvas.width/3;
 	box2 = new GameObject();
-	box2.x = canvas.width/6;
+	
 	
 	select = new GameObject();
 
@@ -78,11 +78,6 @@ function animate()
 			box1.angle = box1.angle + 45;
 			E = false;
 		}
-		else if(select.x = canvas.width/6)
-		{
-			box2.angle = box2.angle + 45;
-			E = false;
-		}
 	}
 	if(q == true)
 	{
@@ -94,11 +89,6 @@ function animate()
 		else if(select.x = canvas.width/3)
 		{
 			box1.angle = box1.angle - 45;
-			q = false;
-		}
-		else if(select.x = canvas.width/6)
-		{
-			box2.angle = box2.angle - 45;
 			q = false;
 		}
 	}
@@ -118,6 +108,6 @@ function animate()
 	select.drawSelect();
 	player.drawRect();
 	box1.drawRect();
-	box2.drawRect();
+	
 }
 
